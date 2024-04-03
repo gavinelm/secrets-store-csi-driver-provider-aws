@@ -39,6 +39,10 @@ spec:
             - --burst={{ .Values.k8sThrottlingParams.burst }}
             {{- end }}
             {{- end }}
+{{- if .Values.env }}
+          env:
+{{ toYaml .Values.env | indent 12 }}
+{{- end }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           securityContext:
